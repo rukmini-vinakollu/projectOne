@@ -27,12 +27,17 @@ st.sidebar.title('Navigation')
 options = st.sidebar.selectbox('Select a section', ['Daily Forecast', 'Hourly Forecast', 'Daily EDA', 'Hourly EDA'])
 
 # Define connection string
-conn = pyodbc.connect(
-    'DRIVER={ODBC Driver 17 for SQL Server};'
-    'SERVER=localhost\\SQLEXPRESS;'
-    'DATABASE=project;'
-    'Trusted_Connection=yes;'
-)
+@st.cache_resource
+def get_connection():
+    return pyodbc.connect(
+        'DRIVER={ODBC Driver 17 for SQL Server};'
+        'SERVER=localhost\\SQLEXPRESS;'
+        'DATABASE=project;'
+        'Trusted_Connection=yes;',
+        timeout=10
+    )
+
+conn = get_connection()
 
 if options == "Daily Forecast":
 
