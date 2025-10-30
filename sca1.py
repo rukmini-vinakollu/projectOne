@@ -28,18 +28,12 @@ st.sidebar.title('Navigation')
 options = st.sidebar.selectbox('Select a section', ['Daily Forecast', 'Hourly Forecast', 'Daily EDA', 'Hourly EDA'])
 
 # Define connection string
-@st.cache_resource
-def get_connection():
-    return pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=106.221.181.221,1433;'   # Replace with your public IP
-        'DATABASE=project;'
-        'UID=streamlit_user;'
-        f'PWD={os.getenv("Rukku303@")};',  # Store password safely
-        timeout=10
-    )
-
-conn = get_connection()
+conn = pyodbc.connect(
+    'DRIVER={ODBC Driver 17 for SQL Server};'
+    'SERVER=127.0.0.1,1433;'
+    'DATABASE=project;'
+    'Trusted_Connection=yes;'
+)
 
 if options == "Daily Forecast":
 
