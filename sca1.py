@@ -29,7 +29,7 @@ options = st.sidebar.selectbox('Select a section', ['Daily Forecast', 'Hourly Fo
 # Define connection string
 conn = pyodbc.connect(
     'DRIVER={ODBC Driver 17 for SQL Server};'
-    'SERVER=REALME\\SQLEXPRESS;'
+    'SERVER=REALME\SQLEXPRESS;'
     'DATABASE=project;'
     'Trusted_Connection=yes;'
 )
