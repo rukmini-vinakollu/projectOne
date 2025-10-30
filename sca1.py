@@ -31,9 +31,10 @@ options = st.sidebar.selectbox('Select a section', ['Daily Forecast', 'Hourly Fo
 def get_connection():
     return pyodbc.connect(
         'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=localhost\\SQLEXPRESS;'
+        'SERVER=106.221.181.221,1433;'   # Replace with your public IP
         'DATABASE=project;'
-        'Trusted_Connection=yes;',
+        'UID=streamlit_user;'
+        f'PWD={os.getenv("Rukku303@")};',  # Store password safely
         timeout=10
     )
 
